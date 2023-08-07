@@ -1,0 +1,57 @@
+.estrelas {
+    display:flex;
+    align-items: center;
+}
+
+.num-estrelas {
+    font-size: 17px;
+    color: #696969;
+    margin-right: 5px;
+}
+
+.drawer-titulo h2 {
+    font-size: 27px;
+    font-weight: 500;
+}
+
+.endereco{
+    font-size: 17px;
+    color: #696969;
+}
+
+.carrossel-container {
+    width:700px;
+    height:400px;
+    max-height:400px;
+    max-width:700px
+}
+
+.facilidades-hotel {
+    padding-top: 15px;
+}
+
+.titulo-fac-hotel, .facilidades-hotel {
+    border-bottom: 1px solid #696969;
+}
+
+.amenities{
+    display:flex;
+    flex-direction: inline-block;
+    padding-top: 10px;
+}
+
+.amenities i {
+    margin-right: 5px;
+    font-size: 18px;
+}
+
+.button-container {
+    display:flex;
+    justify-content: center;
+    margin-bottom: 22px;
+    padding-top: 10px;
+}
+
+.descricao {
+    font-size: 14px;
+}

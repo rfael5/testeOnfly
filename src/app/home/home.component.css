@@ -1,0 +1,98 @@
+.logo-container {
+    height:40px;
+    display:flex;
+    align-items:center;
+    padding-left:25px;
+    margin-bottom: 40px;
+    background:white;
+}
+
+.home-container {
+    height: 100%;
+    padding-top: 40px;
+    padding: 40px 120px 0px 120px;
+    display:flex;
+    flex-direction: column;
+    align-items: center;
+    overflow-y: visible;
+}
+
+.card-search {
+    border-radius: 8px;
+    width: 100%;
+    background: white;
+    height: 315px;
+    margin-bottom: 20px;
+}
+
+.filtro-cidades{
+    width: 100%;
+    display:flex;
+    background:red;
+}
+
+.title-container {
+    border-bottom: solid 1px black;
+    width:100%;
+    margin-bottom: 20px;
+    padding-left: 15px;
+    padding-top: 10px;
+}
+
+.search-container {
+    display: flex;
+    flex-direction: column;
+    padding-left: 15px;
+    padding-right: 15px;
+    margin-bottom: 20px;
+}
+
+.astr {
+    color:red;
+}
+
+.search-label {
+    font-size: 14px;
+    color: gray;
+    font-weight: 600;
+}
+
+.buscar-cidade {
+    border: 1px solid #D3D3D3;
+    border-radius: 5px;
+    height: 40px;
+}
+
+.col-btn-filtro{
+    display:flex;
+    align-items:center;
+    justify-content: center;
+}
+
+.search-button-container {
+    display:flex;
+    justify-content: end;
+    padding-right: 15px;
+    margin-bottom: 15px;
+}
+
+.btn-busca {
+    width: 200px;
+    font-weight: 500;
+}
+
+.breadcrumb-container {
+    display: flex;
+    justify-content: space-between;
+    width:100%;
+    margin-bottom: 20px;
+}
+
+.lista-hoteis {
+    width: 100%;
+    height: 100%;
+}
+
+.input-box {
+    border: 1px solid #d9d9d9;
+}

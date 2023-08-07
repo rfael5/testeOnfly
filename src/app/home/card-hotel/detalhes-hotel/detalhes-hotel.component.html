@@ -1,0 +1,86 @@
+<div class="cabecalho">
+    <div class="estrelas">
+        <span class="num-estrelas">{{detalhesHotel.stars}}</span>
+        <div class="estrela">
+            <i *ngIf="parseInt(detalhesHotel.stars) >= 1" nz-icon nzType="star" nzTheme="fill" style="color:gold"></i>
+            <i *ngIf="parseInt(detalhesHotel.stars) < 1" nz-icon nzType="star" nzTheme="outline"></i>
+        </div>
+        <div class="estrela">
+            <i *ngIf="parseInt(detalhesHotel.stars) >= 2" nz-icon nzType="star" nzTheme="fill" style="color:gold"></i>
+            <i *ngIf="parseInt(detalhesHotel.stars) < 2" nz-icon nzType="star" nzTheme="outline"></i>
+        </div>
+        <div class="estrela">
+            <i *ngIf="parseInt(detalhesHotel.stars) >= 3" nz-icon nzType="star" nzTheme="fill" style="color:gold"></i>
+            <i *ngIf="parseInt(detalhesHotel.stars) < 3" nz-icon nzType="star" nzTheme="outline"></i>
+        </div>
+        <div class="estrela">
+            <i *ngIf="parseInt(detalhesHotel.stars) >= 4" nz-icon nzType="star" nzTheme="fill" style="color:gold"></i>
+            <i *ngIf="parseInt(detalhesHotel.stars) < 4" nz-icon nzType="star" nzTheme="outline"></i>
+        </div>
+        <div class="estrela">
+            <i *ngIf="parseInt(detalhesHotel.stars) >= 5" nz-icon nzType="star" nzTheme="fill" style="color:gold"></i>
+            <i *ngIf="parseInt(detalhesHotel.stars) < 5" nz-icon nzType="star" nzTheme="outline"></i>
+        </div>
+    </div>
+
+    <div class="drawer-titulo">
+        <h2>{{detalhesHotel.name}}</h2>
+    </div>
+    
+    <div style="margin-bottom: 15px;" class="endereco-container">
+        <span class="endereco">{{detalhesHotel.address.city}}, {{detalhesHotel.address.fullAddress}}</span>
+    </div>
+
+    <div class="carrossel-container">
+        <app-carrossel [mostrarContador]="mostrarContador" [images]="detalhesHotel.images" [autoSlide]="true"></app-carrossel>
+    </div>
+
+    <div class="facilidades-hotel" style="margin-bottom: 20px;">
+        <div class="titulo-fac-hotel">
+            <h2>Facilidades do hotel</h2>
+        </div>
+
+        <div class="facilidades">
+            <ng-container *ngIf="!mostrarFacilidades">
+                <div class="amenities" *ngFor="let amenity of this.detalhesHotel.amenities">                                           
+                    <span *ngIf="amenity.key == 'WI_FI'"><i class="fas fa-wifi" style="color: #696969;"></i>Internet banda larga</span>                                
+                    <span *ngIf="amenity.key == 'POOL'"><i class="fas fa-swimming-pool" style="color: #696969;"></i>Piscina</span>                                       
+                    <span *ngIf="amenity.key == 'PUB'"><i class="fas fa-glass-martini-alt" style="color: #696969;"></i>Bar</span>                     
+                    <span *ngIf="amenity.key == 'BREAKFAST'"><i class="fas fa-coffee" style="color: #696969;"></i>Café da manhã</span>                  
+                </div>
+            </ng-container>
+            
+
+            <div *ngIf="mostrarFacilidades">
+                <div *ngFor="let amenity of detalhesHotel.amenities">
+                    <span>{{amenity.label}}</span>
+                </div>
+            </div>
+
+            <div class="button-container">
+                <button
+                    (click)="mostrarOcultarFacilidades()" 
+                    class="btn-facilidades" 
+                    nz-button 
+                    nzType="primary" 
+                    nzSize="large" 
+                    nzShape="round"
+                    nzGhost>
+                    <span>{{txtBotao}}</span>
+                </button>
+            </div>
+        </div>       
+
+    </div>
+
+    <div class="descricao-container">
+        <div>
+            <h2>Conheça um pouco mais</h2>
+        </div>
+        <div>
+            <p class="descricao">
+                {{detalhesHotel.description}}
+            </p>
+        </div>
+    </div>
+</div>

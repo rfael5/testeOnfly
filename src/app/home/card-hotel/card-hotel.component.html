@@ -1,0 +1,104 @@
+<div *ngIf="listaHoteis.length > 0">
+    <div
+        infinite-scroll
+        [infiniteScrollDistance]="distance"
+        [infiniteScrollThrottle]="throttle"
+        (scrolled)="onScroll()"
+    >
+    <div *ngFor="let hotel of cardsHoteis">
+        <div class="card" nz-row>
+        
+            <div nz-col nzSpan="9" class="col-1">
+                <app-carrossel [mostrarContador]="mostrarContador" [images]="hotel.images" [autoSlide]="true"></app-carrossel>
+            </div>
+            
+            <div nz-col nzSpan="9" class="col-2">
+                <div>
+                    <h2>{{hotel.name}}</h2>
+                </div>
+    
+                <div class="endereco-container">
+                    <span class="endereco">{{hotel.address.city}}, {{hotel.address.fullAddress}}</span>
+                </div>
+    
+                <div class="conforto">
+                    <div class="estrelas">
+                        <span class="num-estrelas">{{hotel.stars}}</span>
+                        <div class="estrela">
+                            <i *ngIf="parseInt(hotel.stars) >= 1" nz-icon nzType="star" nzTheme="fill" style="color:gold"></i>
+                            <i *ngIf="parseInt(hotel.stars) < 1" nz-icon nzType="star" nzTheme="outline"></i>
+                        </div>
+                        <div class="estrela">
+                            <i *ngIf="parseInt(hotel.stars) >= 2" nz-icon nzType="star" nzTheme="fill" style="color:gold"></i>
+                            <i *ngIf="parseInt(hotel.stars) < 2" nz-icon nzType="star" nzTheme="outline"></i>
+                        </div>
+                        <div class="estrela">
+                            <i *ngIf="parseInt(hotel.stars) >= 3" nz-icon nzType="star" nzTheme="fill" style="color:gold"></i>
+                            <i *ngIf="parseInt(hotel.stars) < 3" nz-icon nzType="star" nzTheme="outline"></i>
+                        </div>
+                        <div class="estrela">
+                            <i *ngIf="parseInt(hotel.stars) >= 4" nz-icon nzType="star" nzTheme="fill" style="color:gold"></i>
+                            <i *ngIf="parseInt(hotel.stars) < 4" nz-icon nzType="star" nzTheme="outline"></i>
+                        </div>
+                        <div class="estrela">
+                            <i *ngIf="parseInt(hotel.stars) >= 5" nz-icon nzType="star" nzTheme="fill" style="color:gold"></i>
+                            <i *ngIf="parseInt(hotel.stars) < 5" nz-icon nzType="star" nzTheme="outline"></i>
+                        </div>
+                    </div>
+    
+                    <span style="padding-left:10px; margin-right: 10px;">|</span>
+    
+                    <div class="amenities" *ngFor="let amenity of hotel.amenities">
+                        <i *ngIf="amenity.key == 'WI_FI'" class="fas fa-wifi" style="color: #696969;"></i>
+                        <i *ngIf="amenity.key == 'POOL'" class="fas fa-swimming-pool" style="color: #696969;"></i>
+                        <i *ngIf="amenity.key == 'PUB'" class="fas fa-glass-martini-alt" style="color: #696969;"></i>
+                        <i *ngIf="amenity.key == 'BREAKFAST'" class="fas fa-coffee" style="color: #696969;"></i>
+                    </div>
+                    
+                </div>
+    
+                <div *ngIf="hotel.hasRefundableRoom" class="reembolsavel">
+                    <span>Reembolsável</span>
+                </div>
+                
+            </div>
+            
+            <div nz-col nzSpan="6" class="col-3">
+                <span style="color:#696969">A partir de</span>
+                <div>
+                    <span class="cifrao">R$</span><span class="valor">1332,00</span>
+                </div>
+                <span style="color:#696969">R$444,00/noite</span>
+                <span>Impostos inclusos</span>
+                <div class="btn-select-container">
+                    <nz-space>
+                        <button *nzSpaceItem class="btn-select-hotel" nz-button nzType="primary" nzSize="large" nzShape="round" (click)="showLarge(hotel)">
+                            Selecionar
+                        </button>
+                    </nz-space>
+
+                    <div>
+                        <nz-drawer
+                            [nzSize]="size"
+                            [nzVisible]="visible"
+                            nzPlacement="right"                                                       
+                            (nzOnClose)="close()"
+                            >
+                            <ng-container *nzDrawerContent>
+                                <app-detalhes-hotel [detalhesHotel]="detalhesHotel"></app-detalhes-hotel>                                
+                            </ng-container>
+                        </nz-drawer>                     
+                    </div>
+                    
+                </div>
+            </div>
+        </div>
+    </div>
+
+</div>
+
+</div>
+
+<div class="no-result" *ngIf="listaHoteis.length == 0">
+    <span>Nenhum resultado encontrado.</span>
+</div>

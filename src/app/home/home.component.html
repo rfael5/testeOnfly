@@ -1,0 +1,105 @@
+<div class="logo-container">
+    <img 
+        nz-image 
+        width="120px"
+        height="28px" 
+        nzSrc="../../assets/OnflyLogo.png">
+</div>
+
+<div class="home-container">
+    <div class="card-search">
+        <div class="title-container">
+            <h2>Reservar hotel</h2>
+        </div>        
+        
+        <div nz-row>
+            <div nz-col nzSpan="18">
+                <div class="search-container">
+                    <label class="search-label">Pesquisar por cidade <span class="astr">*</span></label>
+        
+                    <nz-select class="input-box" nzShowSearch nzAllowClear nzLabel="" nzPlaceHolder="Selecione uma cidade" [(ngModel)]="selectedValue">
+                        <nz-option *ngFor="let option of options" [nzLabel]="formatarOptionsLabel(option)" [nzValue]="option"></nz-option>
+                    </nz-select>
+        
+                </div>
+            </div>
+            <div nz-col class="col-btn-filtro" nzSpan="6">
+                <div class="search-button-container">
+                    <button 
+                        class="btn-busca" 
+                        nz-button 
+                        nzType="primary" 
+                        nzSize="large" 
+                        nzShape="round"
+                        (click)="selecionarCidade()">
+                        <span>{{txtBtnPesquisa}}</span>
+                    </button>
+                </div>
+            </div>
+          </div>
+
+          <div nz-row>
+            <div nz-col nzSpan="18">
+                <div class="search-container">
+                    <label class="search-label">Pesquisar por hotel <span class="astr">*</span></label>
+                    <input class="input-box" nz-input placeholder="Basic usage" [(ngModel)]="nomeHotel" />
+                </div>
+            </div>
+            <div nz-col class="col-btn-filtro" nzSpan="6">
+                <div class="search-button-container">
+                    <button 
+                        class="btn-busca" 
+                        nz-button 
+                        nzType="primary" 
+                        nzSize="large" 
+                        nzShape="round"
+                        (click)="filtrarPorNomeHotel()">
+                        <span>{{txtBtnPesquisa}}</span>
+                    </button>
+                </div>
+            </div>
+          </div>
+        
+
+
+
+
+    
+    </div>
+
+    <div class="breadcrumb-container">
+        <div>
+            <nz-breadcrumb style="color:#1890ff; font-size: 15px; font-weight: 500" nzSeparator=">">
+                <nz-breadcrumb-item>Início</nz-breadcrumb-item>
+                <nz-breadcrumb-item>
+                  Hotéis
+                </nz-breadcrumb-item>
+                <nz-breadcrumb-item>An Application</nz-breadcrumb-item>
+            </nz-breadcrumb>
+        </div>
+
+        <div>
+            <span>
+                Organizar por
+                <nz-select [(ngModel)]="ordemLista" (ngModelChange)="ordenarLista()" nzBorderless style="color:#1890ff; font-weight: 600">
+                    <nz-option nzValue="recomendados" nzLabel="Recomendados"></nz-option>
+                    <nz-option nzValue="melhor-avaliados" nzLabel="Melhor Avaliados"></nz-option>
+                  </nz-select> 
+            </span>         
+        </div>
+    </div>
+
+    <div *ngIf="!loading">
+        <div class="lista-hoteis">
+            <app-card-hotel [listaHoteis]="arrayHoteis"></app-card-hotel>
+        </div>
+    </div>
+
+    <div *ngIf="loading">
+        <nz-spin nzSimple [nzSize]="'large'"></nz-spin>
+    </div>
+    
+</div>
+
+
+
