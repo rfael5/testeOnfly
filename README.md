@@ -23,5 +23,6 @@ Angular 16
 ### Anotações:
 *Comandos:
 - npm install
+- npm install -g json-server
 - json-server --watch db.json
 - ng serve
